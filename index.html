@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Registration</h1>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text " placeholder="Full Name" required>
+                    <box-icon type='solid' name='user'></box-icon>
+                </div>
+                <div class="input-field">
+                    <input type="text " placeholder="Username" required>
+                    <box-icon type='solid' name='user'></box-icon>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="email " placeholder="Email" required>
+                    <box-icon type='solid' name='envelope'></box-icon>
+                </div>
+                <div class="input-field">
+                    <input type="text " id="phone" placeholder="Phone Number" required>
+                    <box-icon type='solid' name='phone'></box-icon>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="password " placeholder="Password" required>
+                    <box-icon type='solid' name='lock-alt'></box-icon>
+                </div>
+                <div class="input-field">
+                    <input type="password"placeholder="Password" required>
+                    <box-icon type='solid' name='lock-alt'></box-icon>
+                </div>
+                <label for=""><input type="checkbox">I hereby declare that the above information provided is true and correct</label>
+                <button type="submit" class="btn">Register</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded' , function(){
+            inputFields.forEach(function(input){
+                input.addEventListener('input' , function(){
+                if(this.value.trim()!==''){
+                    this.previousElementSibling.style.display='none';
+                }
+                else{
+                    this.previousElementSibling.style.display='block';
+                }
+            });
+        });
+
+        function isValidEmail(email){
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const lastPartRegex = /\.(com|net|org)$/i;
+            return emailRegex.test(email) && lastPartRegex.test(email);
+
+        }
+        const emailInput =document.getElementById('email');
+        emailInput.addEventListener('input',function(){
+            const isValid = isValidEmail(this.value);
+            if(!isValid){
+                this.setCustomValidity('Please enter a valid email address.');
+
+            }
+            else{
+                this.setCustomValidity('');
+
+            }
+        });
+        });
+    </script>
+</body>
+</html>
